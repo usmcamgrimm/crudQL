@@ -38,3 +38,12 @@ app.get('/learners', (req, res) => {
             console.log(err);
     })
 })
+
+// Query DB for specific learner details
+app.get('/learners/:id', (req, res) => {
+    mysqlConnection.query('SELECT * FROM learnerdetails WHERE learner_id = ?', [req.params.id], (err, rows, fields) => {
+        if (!err) res.send(rows);
+        else
+            console.log(err);
+    })
+})
