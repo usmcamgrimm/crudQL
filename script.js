@@ -28,3 +28,13 @@ mysqlConnection.connect(err => {
 //Set server connect and port variable
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`Listening on port ${port}..`))
+
+//Create GET router to fetch data from mysql
+app.get('/learners', (req, res) => {
+    mysqlConnection.query('SELECT * FROM learnerdetails', (err, rows, fields) => {
+        if (!err)
+            res.send(rows);
+        else
+            console.log(err);
+    })
+})
