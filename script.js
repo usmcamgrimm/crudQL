@@ -10,10 +10,10 @@ app.use(bodyparser.json());
 // Establish connection with the mysql database
 // MySQL connection details
 let mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '**************',
-    database: 'learners',
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database,
     multipleStatements: true
 });
 
@@ -28,3 +28,4 @@ mysqlConnection.connect((err) => {
 //Set server connect and port variable
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
+
