@@ -27,7 +27,7 @@ app.get('/witcher', function(req,res) {
     connection.query('SELECT * FROM books', function(err, rows, fields) {
         connection.end();
             if (!err)
-                console.log('The solution is: ', rows);
+                console.log('This is a list of The Witcher books: ', rows);
             else
                 console.log('Error while performing query.');
     })
